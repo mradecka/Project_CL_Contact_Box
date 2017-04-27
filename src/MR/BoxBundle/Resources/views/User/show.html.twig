@@ -1,0 +1,84 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}Kontakt{% endblock %}
+
+{% block body %}
+    <div class="col-lg-2">
+    </div>
+    <div class="col-lg-6">
+        <h1>Wybrany kontakt</h1>
+        {%if info%}
+            <h3>{{info}}</h3>  
+        {%endif%}
+        {%if user%} 
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Dane</th>
+                        <th>Dodaj</th>
+                        <th>Wyświetl</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <ul>
+                                <li class="list-group-item">
+                                    Imię: {{user.name}}<br>
+                                </li>
+                                <li class="list-group-item">
+                                    Nazwisko: {{user.surname}}
+                                </li>
+                                <li class="list-group-item">
+                                    Opis: {{user.description}}
+                                </li>
+                            </ul>
+                        </td>
+                        <td>
+                            <ul>
+                                <li class="list-group-item">
+                                    <form action="{{path('address_new', {'id':user.id})}}">
+                                        <input type="submit" value="Adres" class="btn btn-info btn-xs">
+                                    </form>
+                                </li>
+                                <li class="list-group-item">
+                                    <form action="{{path('phone_new', {'id':user.id})}}">
+                                        <input type="submit" value="Telefon" class="btn btn-info btn-xs">
+                                    </form>
+                                </li>
+                                <li class="list-group-item">
+                                    <form action="{{path('email_new', {'id':user.id})}}">
+                                        <input type="submit" value="Email" class="btn btn-info btn-xs">
+                                    </form>
+                                </li>
+                            </ul>
+                        </td>
+                        <td>
+                            <ul>
+                                <li class="list-group-item">
+                                    <form action="{{path('address_index', {'id':user.id})}}">
+                                        <input type="submit" value="Adres" class="btn btn-info btn-xs">
+                                    </form>
+                                </li>
+                                <li class="list-group-item">
+                                    <form action="{{path('phone_index', {'id':user.id})}}">
+                                        <input type="submit" value="Telefon" class="btn btn-info btn-xs">
+                                    </form>
+                                </li>
+                                <li class="list-group-item">
+                                    <form action="{{path('email_index', {'id':user.id})}}">
+                                        <input type="submit" value="Email" class="btn btn-info btn-xs">
+                                    </form>
+                                </li>
+                            </ul>
+
+                        </td>
+                    </tr>
+                    <tr>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    {%endif%}
+</div>
+{% endblock %}

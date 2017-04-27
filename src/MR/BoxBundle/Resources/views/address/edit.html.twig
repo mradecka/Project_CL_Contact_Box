@@ -1,0 +1,51 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}Edycja adresu{% endblock %}
+
+{% block body %}
+    <div class="col-lg-2">
+        <form action="{{path('address_index', { 'id': address.user.id })}}">
+            <input type="submit" class="btn btn-info pull-left" value="Powrót">
+        </form>
+    </div>
+    <div class="col-lg-10">
+        <h1>Edytowanie adresu:</h1>
+        {%if edit_form%} 
+            {{form_start(edit_form, { 'attr': {'class': 'form-horizontale col-md-4'}}) }}
+
+            <div class="form-group">
+                <label class="control-label col-sm-10">Miasto:</label>
+                <div class="col-sm-2">
+
+                    {{form_widget(edit_form.city)}}
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-10">Ulica:</label>
+                <div class="col-sm-2">
+                    {{form_widget(edit_form.street)}}
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-10">Numer domu:</label>
+                <div class="col-sm-2">
+                    {{form_widget(edit_form.houseNumber)}}
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-10">Numer mieszkania:</label>
+                <div class="col-sm-2">
+                    {{form_widget(edit_form.flatNumber)}}
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <input type="submit" class="btn btn-default", value="Edytuj" />
+                </div>
+            </div> 
+            {{form_end(edit_form)}}
+        {%endif%}
+    </div>
+{% endblock %}
+

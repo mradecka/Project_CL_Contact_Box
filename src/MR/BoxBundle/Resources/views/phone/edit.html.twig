@@ -1,0 +1,38 @@
+{% extends "::base.html.twig" %}
+{% block title %}Edytowanie telefonu{% endblock %}
+
+{% block body %}
+    <div class="col-lg-2">
+        <form action="{{path('phone_index', { 'id': phone.user.id })}}">
+            <input type="submit" class="btn btn-info pull-left" value="Powrót">
+        </form>
+    </div>
+    <div class="col-lg-10">
+        <h1>Edytowanie numeru telefonu:</h1>
+
+        {{form_start(edit_form, { 'attr': {'class': 'form-horizontale col-md-4'}}) }}
+        <table class="table">
+            <div class="form-group">
+                <label class="control-label col-sm-6" for="email">Numer telefonu:</label>
+                <div class="col-sm-6">
+
+                    {{form_widget(edit_form.phone)}}
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-6" for="pwd">Typ</label>
+                <div class="col-sm-6">
+                    {{form_widget(edit_form.type)}}
+                </div>
+            </div>
+        </table> 
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-lg-10">
+                <input type="submit" class="btn btn-info pull-left" value="Edytuj" />
+
+            </div>
+        </div>
+        {{form_end(edit_form)}}
+    {% endblock %}
+
+

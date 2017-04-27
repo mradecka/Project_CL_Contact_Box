@@ -1,0 +1,36 @@
+{% extends "::base.html.twig" %}
+{% block title %}Dodawanie telefonu{% endblock %}
+
+{% block body %}
+    <div class="col-lg-2">
+        <form action="{{path('phone_index', { 'id': id })}}">
+            <input type="submit" class="btn btn-info pull-left" value="Powrót">
+        </form>
+    </div>
+    <div class="col-lg-10">
+        <h1>Dodawanie nowego numeru telefonu:</h1>
+
+        {{form_start(form, { 'attr': {'class': 'form-horizontale col-md-4'}}) }}
+        <table class="table">
+            <div class="form-group">
+                <label class="control-label col-sm-6" for="email">Numer telefonu:</label>
+                <div class="col-sm-6">
+
+                    {{form_widget(form.phone)}}
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-6" for="pwd">Typ</label>
+                <div class="col-sm-6">
+                    {{form_widget(form.type)}}
+                </div>
+            </div>
+        </table> 
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-lg-10">
+                <input type="submit" class="btn btn-info pull-left" value="Zapisz" />
+
+            </div>
+        </div>
+        {{form_end(form)}}
+    {% endblock %}

@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+{% block title %}Telefony{% endblock %}
+{% block body %}
+    <div class="col-lg-2">
+    </div>
+    <div class="col-lg-6">
+        <h1>Telefony</h1>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Telefon</th>
+                    <th>Typ</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for phone in phones %}
+                    <tr>
+                        <td><span class="glyphicon glyphicon-phone-alt"></span></td>
+                        <td>{{ phone.phone }}</td>
+                        <td>{{ phone.type }}</td>
+                        <td>
+                            <ul>
+                                <li class="list-group-item">
+                                    <a href="{{ path('phone_edit', { 'id': phone.id }) }}">Edytuj</a>
+                                </li>
+                                <li class="list-group-item">
+                                    <a href="{{ path('phone_delete', { 'id': phone.id }) }}">Usuń</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <form action="{{path('showOneUser', { 'id': id })}}">
+            <input type="submit" class="btn btn-info pull-left" value="Powrót">
+        </form>
+        <form action="{{path('phone_new', {'id':id})}}">
+            <input type="submit" class="btn btn-info pull-right" value="Dodaj">
+        </form>
+    </div>
+{% endblock %}

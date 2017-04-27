@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+{% block title %}Emaile{% endblock %}
+{% block body %}
+    <div class="col-lg-2">
+    </div>
+    <div class="col-lg-6">
+        <h1>Telefony</h1>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Email</th>
+                    <th>Typ</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for email in emails %}
+                    <tr>
+                        <td><span class="glyphicon glyphicon-envelope"></span></td>
+                        <td>{{ email.email }}</td>
+                        <td>{{ email.type }}</td>
+                        <td>
+                            <ul>
+                                <li class="list-group-item">
+                                    <a href="{{ path('email_edit', { 'id': email.id }) }}">Edytuj</a>
+                                </li>
+                                <li class="list-group-item">
+                                    <a href="{{ path('email_delete', { 'id': email.id }) }}">Usuń</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <form action="{{path('showOneUser', { 'id': id })}}">
+            <input type="submit" class="btn btn-info pull-left" value="Powrót">
+        </form>
+        <form action="{{path('email_new', {'id':id})}}">
+            <input type="submit" class="btn btn-info pull-right" value="Dodaj">
+        </form>
+    </div>
+{% endblock %}

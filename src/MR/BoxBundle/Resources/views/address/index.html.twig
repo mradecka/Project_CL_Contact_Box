@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+{% block title %}Adresy{% endblock %}
+{% block body %}
+    <div class="col-lg-2">
+    </div>
+    <div class="col-lg-6">
+        <h1>Adresy</h1>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Miasto</th>
+                    <th>Ulica</th>
+                    <th>Numer domu</th>
+                    <th>Numer mieszkania</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for address in addresses %}
+                    <tr>
+                        <td><span class="glyphicon glyphicon-envelope"></span></td>
+                        <td>{{ address.city }}</td>
+                        <td>{{ address.street }}</td>
+                        <td>{{ address.houseNumber }}</td>
+                        <td>{{ address.flatNumber }}</td>
+                        <td>
+                            <ul>
+
+                                <li class="list-group-item">
+                                    <a href="{{ path('address_edit', { 'id': address.id }) }}">Edytuj</a>
+                                </li>
+                                <li class="list-group-item">
+                                    <a href="{{ path('address_delete', { 'id': address.id }) }}">Usuń</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <form action="{{path('showOneUser', { 'id': id })}}">
+            <input type="submit" class="btn btn-info pull-left" value="Powrót">
+        </form>
+        <form action="{{path('address_new', {'id':id})}}">
+            <input type="submit" class="btn btn-info pull-right" value="Dodaj">
+        </form>
+    </div>
+{% endblock %}
