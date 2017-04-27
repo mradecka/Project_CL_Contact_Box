@@ -1,8 +1,3 @@
-Contact_Box
-===========
-
-A Symfony project created on April 7, 2017, 2:30 pm.
-
 # Symfony2 (first project)
 
 Contact box with:
